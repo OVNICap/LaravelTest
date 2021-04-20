@@ -21,16 +21,16 @@ https://gitpod.io/#https://github.com/OVNICap/LaravelTest
 
 # The exercise
 
-Here we use log files as a simplified storage system. By running `php seed.php` (you can check what this seeder does in the source code), 4 files are created with random data: **data/cache/2021-04-01.log**, **data/cache/2021-04-02.log**, **data/cache/2021-04-03.log** and **data/cache/2021-04-04.log**, each file represent a day, each line of file represent a hit (1 display of an advertise in someone's browser).
+Here we use log files as a simplified storage system. By running `php artisan seed` (you can check what this seeder does in the source code), 4 files are created with random data: **data/cache/2021-04-01.log**, **data/cache/2021-04-02.log**, **data/cache/2021-04-03.log** and **data/cache/2021-04-04.log**, each file represent a day, each line of file represent a hit (1 display of an advertise in someone's browser).
 
 Each line always contains a date-time on 26 characters and an IP on 20 characters.
 
-Currently, the IndexController::indexAction method return fake data. Modify it to return the actual number of lines for each file. (The display of those values as line chart is already working as you can see by running the app with `composer serve`).
+Currently, the IndexController::indexAction method return fake data. Modify it to return the actual number of lines for each file. (The display of those values as line chart is already working as you can see by running the app with `php artisan serve`).
 
 You should run `composer test` and make the unit tests pass:
-- First one checks values returned by `indexAction` are the ones expected (your main goal).
-- Second one checks `indexAction` can filter the output by dates `start` and `end` (included) given as params from URL query.
-- The third one checks that `indexAction` is fast enough to be called at least 2000 times per second (your bonus goal).
+- First one checks values returned by `index()` are the ones expected (your main goal).
+- Second one checks `index()` can filter the output by dates `start` and `end` (included) given as params from URL query.
+- The third one checks that `index()` is fast enough to be called at least 2000 times per second (your bonus goal).
 
 # Submit
 
