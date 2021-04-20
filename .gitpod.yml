@@ -1,4 +1,4 @@
 tasks:
-  - init: composer update -n && php artisan seed
+  - init: cp .env.example .env && php artisan key:generate && composer update -n && php artisan seed
 image:
   file: .gitpod.Dockerfile
