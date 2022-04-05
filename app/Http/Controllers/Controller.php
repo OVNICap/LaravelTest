@@ -21,10 +21,10 @@ final class Controller extends BaseController
 
         // TODO: Show only the date between start and end included
         $hits = [
-            '2021-04-01' => $counterService->countLines("$directory/2021-04-01.log"),
-            '2021-04-02' => $counterService->countLines("$directory/2021-04-02.log"),
-            '2021-04-03' => $counterService->countLines("$directory/2021-04-03.log"),
-            '2021-04-04' => $counterService->countLines("$directory/2021-04-04.log"),
+            '2022-04-01' => $counterService->countLines("$directory/2022-04-01.log"),
+            '2022-04-02' => $counterService->countLines("$directory/2022-04-02.log"),
+            '2022-04-03' => $counterService->countLines("$directory/2022-04-03.log"),
+            '2022-04-04' => $counterService->countLines("$directory/2022-04-04.log"),
         ];
 
         $dates = array_keys($hits);

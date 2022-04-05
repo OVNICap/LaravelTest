@@ -21,7 +21,7 @@ https://gitpod.io/#https://github.com/OVNICap/LaravelTest
 
 # The exercise
 
-Here we use log files as a simplified storage system. By running `php artisan seed` (you can check what this seeder does in the source code), 4 files are created with random data: **storage/logs/daily/2021-04-01.log**, **storage/logs/daily/2021-04-02.log**, **storage/logs/daily/2021-04-03.log** and **storage/logs/daily/2021-04-04.log**, each file represent a day, each line of file represent a hit (1 display of an advertisement in someone's browser).
+Here we use log files as a simplified storage system. By running `php artisan seed` (you can check what this seeder does in the source code), 4 files are created with random data: **storage/logs/daily/2022-04-01.log**, **storage/logs/daily/2022-04-02.log**, **storage/logs/daily/2022-04-03.log** and **storage/logs/daily/2022-04-04.log**, each file represent a day, each line of file represent a hit (1 display of an advertisement in someone's browser).
 
 Each line always contains a date-time on 26 characters and an IP on 20 characters.
 

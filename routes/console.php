@@ -20,10 +20,10 @@ Artisan::command('seed', function () {
     $progressBar = new ProgressBar();
 
     $days = [
-        '2021-04-01',
-        '2021-04-02',
-        '2021-04-03',
-        '2021-04-04',
+        '2022-04-01',
+        '2022-04-02',
+        '2022-04-03',
+        '2022-04-04',
     ];
 
     $directory = storage_path('logs/daily');

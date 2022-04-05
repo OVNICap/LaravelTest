@@ -17,10 +17,10 @@ class ChartTest extends TestCase
 
         $this->assertStringContainsString(
             'data-hits="' . htmlspecialchars(json_encode([
-                '2021-04-01' => count(file("$directory/2021-04-01.log")),
-                '2021-04-02' => count(file("$directory/2021-04-02.log")),
-                '2021-04-03' => count(file("$directory/2021-04-03.log")),
-                '2021-04-04' => count(file("$directory/2021-04-04.log")),
+                '2022-04-01' => count(file("$directory/2022-04-01.log")),
+                '2022-04-02' => count(file("$directory/2022-04-02.log")),
+                '2022-04-03' => count(file("$directory/2022-04-03.log")),
+                '2022-04-04' => count(file("$directory/2022-04-04.log")),
             ])) . '"',
             $response->getContent()
         );
@@ -28,16 +28,39 @@ class ChartTest extends TestCase
 
     public function testIndexActionCanBeParametrized(): void
     {
-        $response = $this->get('/?start=2021-04-02&end=2021-04-03');
+        $directory = storage_path('logs/daily');
+
+        $response = $this->get('/?start=2022-04-02&end=2022-04-03');
 
         $response->assertStatus(200);
 
-        $directory = storage_path('logs/daily');
+        $this->assertStringContainsString(
+            'data-hits="' . htmlspecialchars(json_encode([
+                '2022-04-02' => count(file("$directory/2022-04-02.log")),
+                '2022-04-03' => count(file("$directory/2022-04-03.log")),
+            ])) . '"',
+            $response->getContent()
+        );
+
+        $response = $this->get('/?start=2022-04-03&end=2022-04-04');
+
+        $response->assertStatus(200);
 
         $this->assertStringContainsString(
             'data-hits="' . htmlspecialchars(json_encode([
-                '2021-04-02' => count(file("$directory/2021-04-02.log")),
-                '2021-04-03' => count(file("$directory/2021-04-03.log")),
+                '2022-04-03' => count(file("$directory/2022-04-03.log")),
+                '2022-04-04' => count(file("$directory/2022-04-04.log")),
+            ])) . '"',
+            $response->getContent()
+        );
+
+        $response = $this->get('/?start=2022-04-01&end=2022-04-01');
+
+        $response->assertStatus(200);
+
+        $this->assertStringContainsString(
+            'data-hits="' . htmlspecialchars(json_encode([
+                '2022-04-01' => count(file("$directory/2022-04-01.log")),
             ])) . '"',
             $response->getContent()
         );
@@ -55,10 +78,10 @@ class ChartTest extends TestCase
         // Evaluate machine performances indexed on non-optimized code
         $baseTime = microtime(true);
 
-        $d1 = count(file("$directory/2021-04-01.log"));
-        $d2 = count(file("$directory/2021-04-02.log"));
-        $d3 = count(file("$directory/2021-04-03.log"));
-        $d4 = count(file("$directory/2021-04-04.log"));
+        $d1 = count(file("$directory/2022-04-01.log"));
+        $d2 = count(file("$directory/2022-04-02.log"));
+        $d3 = count(file("$directory/2022-04-03.log"));
+        $d4 = count(file("$directory/2022-04-04.log"));
 
         $baseTime = microtime(true) - $baseTime;
 
@@ -69,10 +92,10 @@ class ChartTest extends TestCase
 
         for ($i = 0; $consumed < 1; $i++) {
             $m = microtime(true);
-            $this->assertSame($d1, $service->countLines("$directory/2021-04-01.log"));
-            $this->assertSame($d2, $service->countLines("$directory/2021-04-02.log"));
-            $this->assertSame($d3, $service->countLines("$directory/2021-04-03.log"));
-            $this->assertSame($d4, $service->countLines("$directory/2021-04-04.log"));
+            $this->assertSame($d1, $service->countLines("$directory/2022-04-01.log"));
+            $this->assertSame($d2, $service->countLines("$directory/2022-04-02.log"));
+            $this->assertSame($d3, $service->countLines("$directory/2022-04-03.log"));
+            $this->assertSame($d4, $service->countLines("$directory/2022-04-04.log"));
             $consumed += microtime(true) - $m;
         }
 

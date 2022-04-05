@@ -4,7 +4,8 @@
 /storage/*.key
 /vendor
 .idea
-.env
+# Unignored to ease the env implementation for local test
+#.env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
